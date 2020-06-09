@@ -1,3 +1,3 @@
 # FreeCodeCamp D3:Bar Chart
-## Project for FCC 
+## FCC Data Visualisation Project
 GDP data  visualization with *d3.js*
