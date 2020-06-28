@@ -1,24 +1,20 @@
-(function (d3$1) {
+(function () {
   'use strict';
 
-  const svg = d3
-    .select("svg");
+  const svg = d3.select("svg");
 
     const margin = {top: 10, right: 50, bottom: 50, left: 50};
     const w = +svg.attr("width") - margin.left - margin.right;
     const h = +svg.attr("height") - margin.top - margin.bottom;
 
-    //======MEMO d[0] 'date', d[1] '$$'=====
-
     const dataUrl="https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/GDP-data.json";
     const parseDate = d3.timeParse("%Y-%m-%d");
-    const getMonth = d3.timeFormat("%m");
     const quarter=(str)=>{return Math.ceil(new Date(str).getMonth()/3+1)+"Q"};
 
     d3.json(dataUrl)
     .then(function(json) {
       let dataset = json.data;
-      const barWidth = Math.ceil((w)/ dataset.length); 
+      const barWidth = Math.floor((w)/ dataset.length);// 2.5;
       const [minVal, maxVal] = d3.extent(dataset, d => d[1]);
       const [minDate, maxDate] = d3.extent(dataset, d => d[0]);   
       //==============SCALING FUNCS x-dates,  y-values======
@@ -54,7 +50,7 @@
     .attr("fill", "indigo")
     .attr("x",(d, i)=>x(parseDate(d[0]))+margin.left)
     .attr("y",(d,i)=> y(d[1]))
-    .attr("width",(d,i)=>w/dataset.length)
+    .attr("width",(d,i)=>barWidth)
     .attr("height",(d,i)=> h-y(d[1]))
     .attr("data-date",d=>d[0])
     .attr("data-gdp", d=>d[1])  
@@ -73,4 +69,4 @@
       });
     });
 
-}(d3));
+}());
