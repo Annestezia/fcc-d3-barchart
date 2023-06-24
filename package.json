@@ -13,6 +13,6 @@
     "rollup": "^1.32.0"
   },
   "dependencies": {
-    "onchange": "^6.1.0"
+    "onchange": "^6.1.1"
   }
 }
