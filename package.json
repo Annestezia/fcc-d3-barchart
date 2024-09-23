@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "rollup": "^1.32.0"
+    "rollup": "^3.29.5"
   },
   "dependencies": {
     "onchange": "^6.1.1"
